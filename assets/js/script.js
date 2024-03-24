@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", function(){
             alert("You clicked Submit");
         } else {
             let gameType = this.getAttribute("data-type");          // else we set this to the gameType which will tell us what game type we are wanting to run
-            alert(`You clicked $(gameType)`);                       // this will tell the user what button was clicked
+            runGame(gameType);                     // we want to have it run the game
         }
      })   
     }
+    runGame("addition");
 
 })
 
@@ -25,11 +26,18 @@ document.addEventListener("DOMContentLoaded", function(){
  * The main game "loop" called when the script is first loaded
  * and after the users answer has been processed
  */
-function runGame (){  /* we will need this */
+function runGame (gameType){  /* we will need this */
 
     // create two random numbers in our code between 1 and 25
     let num1 = Math.floor(Math.random()*25)+1;
     let num2 = Math.floor(Math.random() * 25) + 1;
+
+    if (gameType === "addition"){
+        displayAdditionQuestion(num1,num2);
+    } else {
+        alert(`Unknown game type: ${gameType}`);
+        throw `Unknown game Type: ${gameType}. Aborting`;        //This will stop the game
+    }
 
 }
 
@@ -53,8 +61,10 @@ function incrementWrongAnswer (){
 
 }
 
-function displayAdditionQuestion (){/*could have this for image*/
-
+function displayAdditionQuestion (operand1, operand2){/*could have this for image*/
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "+";
 }
 
 
