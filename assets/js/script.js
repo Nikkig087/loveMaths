@@ -53,8 +53,10 @@ function checkAnswer() {  /*we will need this */
 
  if (isCorrect){
     alert ("Hey you got it right")
+    incrementScore();
  } else {
-   alert( `Aw you answered ${userAnswer}.  The correct answer is ${calculatedAnswer[0]}`)
+   alert( `Aw you answered ${userAnswer}.  The correct answer is ${calculatedAnswer[0]}`);
+   incrementWrongAnswer();
  }
  runGame(calculatedAnswer[1]); //this runs a second game
 }
@@ -77,12 +79,20 @@ function calculateCorrectAnswer() {
 
 }
 
+/**Gets the current score from the DOM aand increments it by 1 */
+
 function incrementScore() {  /*could have this to see how many right answers the user had before it was wrong */
 
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").innerText = ++oldScore;
 }
 
-function incrementWrongAnswer() {
 
+/**Gets the current tally of incorrect answers from the DOM and increments it by 1 */
+
+function incrementWrongAnswer() {
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 }
 
 function displayAdditionQuestion(operand1, operand2) {/*could have this for image*/
