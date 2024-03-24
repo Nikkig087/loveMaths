@@ -47,18 +47,18 @@ function runGame(gameType) {  /* we will need this */
 
 
 function checkAnswer() {  /*we will need this */
- let userAnswer =parseInt(document.getElementById("anser-box").value);
+ let userAnswer =parseInt(document.getElementById("answer-box").value);
  let calculatedAnswer = calculateCorrectAnswer();
  let isCorrect = userAnswer === calculatedAnswer[0];
 
  if (isCorrect){
     alert ("Hey you got it right")
- } else (
-    `Aw you answered ${userAnswer}.  The correct answer is ${calculatedAnswer[0]}`)
+ } else {
+   alert( `Aw you answered ${userAnswer}.  The correct answer is ${calculatedAnswer[0]}`)
  }
- runGame(calculatedAnswer[1]);
-
+ runGame(calculatedAnswer[1]); //this runs a second game
 }
+
 
 /** Gets the operands (the numbers) and the operator (plus, minus etc)
  * directly from the dom, and returns the correct answer.  By default when we get data from the DOM it returns it as a string but we cant do calc on a string so we need to do parseInt to make it a whole number
