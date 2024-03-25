@@ -36,6 +36,9 @@ function runGame(gameType) {  /* we will need this */
         displayAdditionQuestion(num1, num2);
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1,num2);
+    } else if (gameType === "minus") {
+        displaySubtractQuestion(num1, num2)
+
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game Type: ${gameType}. Aborting`;        //This will stop the game
@@ -79,7 +82,9 @@ function calculateCorrectAnswer() {
         return [operand1 + operand2, "addition"];
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
-    } else{
+    } else if (operator === "-") {
+        return [operand1 - operand2, "minus"];} 
+        else{
         alert(`Unimplemented operator ${operator}`);
         throw `Unimplemented operator ${operator}`,"Aborting"; }
 
@@ -108,9 +113,16 @@ function displayAdditionQuestion(operand1, operand2) {/*could have this for imag
 }
 
 
-function displaySubtractQuestion() {  /*this for our question*/
+function displaySubtractQuestion(operand1,operand2) {  /*this for our question*/
+    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1:operand2;  
+    // set it to the largest of the two, so if operand1 is bigger return that else if operand2 is bigger return that instead
 
+
+    document.getElementById("operand2").textContent = operand2 > operand1 ? operand1 : operand2; 
+
+    document.getElementById("operator").textContent = "-";
 }
+
 
 function displayMultiplyQuestion(operand1,operand2) {
     document.getElementById("operand1").textContent = operand1;
