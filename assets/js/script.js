@@ -55,7 +55,7 @@ function runGame(gameType) {  /* we will need this */
         displaySubtractQuestion(num1, num2);
 
     } else if (gameType === "division") {
-        displayDivisonQuestion(num1, num2);
+        displayDivisionQuestion(num1, num2);
 
     }
     
@@ -106,7 +106,7 @@ function calculateCorrectAnswer() {
         return [operand1 - operand2, "subtract"];
     }
     else if (operator === "/") {
-        return  [Math.floor(operand1 / operand2), "division"];
+        return [operand1 / operand2, "division"];
     }
     else {
         alert(`Unimplemented operator ${operator}`);
@@ -156,11 +156,11 @@ function displayMultiplyQuestion(operand1, operand2) {
 }
 
 
-function displayDivisonQuestion(operand1, operand2) {
-    document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
-    // set it to the largest of the two, so if operand1 is bigger return that else if operand2 is bigger return that instead
-
-
-    document.getElementById("operand2").textContent = operand2 > operand1 ? operand1 : operand2;
+function displayDivisionQuestion(operand1, operand2) {
+  operand1 = operand1 * operand2; // Ensure the result is a whole number
+    
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
     document.getElementById("operator").textContent = "/";
 }
+
