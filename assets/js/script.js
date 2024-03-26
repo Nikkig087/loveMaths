@@ -51,7 +51,7 @@ function runGame(gameType) {  /* we will need this */
         displayAdditionQuestion(num1, num2);
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2);
-    } else if (gameType === "minus") {
+    } else if (gameType === "subtract") {
         displaySubtractQuestion(num1, num2);
 
     } else if (gameType === "division") {
@@ -103,7 +103,7 @@ function calculateCorrectAnswer() {
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
     } else if (operator === "-") {
-        return [operand1 - operand2, "minus"];
+        return [operand1 - operand2, "subtract"];
     }
     else if (operator === "/") {
         return  [Math.floor(operand1 / operand2), "division"];
@@ -143,7 +143,7 @@ function displaySubtractQuestion(operand1, operand2) {  /*this for our question*
     // set it to the largest of the two, so if operand1 is bigger return that else if operand2 is bigger return that instead
 
 
-    document.getElementById("operand2").textContent = operand2 > operand1 ? operand1 : operand2;
+    document.getElementById("operand2").textContent = operand1 > operand2 ? operand2 : operand1;
 
     document.getElementById("operator").textContent = "-";
 }
